@@ -1,0 +1,60 @@
+html{
+  background: url("Light-yellow-wallpaper-with-flowers-1.jpg");
+  background-size: cover;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+  margin-top: 15px;
+  z-index: -10;
+  background-color: rgba(43, 145, 241, 0.548);
+}
+.logo{
+  margin: 5px;
+}
+
+
+h1{
+  color: rgb(0, 0, 0);
+  font-family: fantasy;
+  margin: 0;
+}
+
+#tokyo-map{
+  position: absolute;
+  filter: opacity(100%);
+  border: solid 10px rgb(172, 45, 6);
+}
+canvas {
+  filter: opacity(100%);
+  margin: 0;
+  
+}
+
+p{
+  font-family: fantasy;
+  font-size: 2rem;
+  margin-left: 150px;
+}
+span{
+  font-family: fantasy;
+  margin-left: 150px;
+}
+
+select{
+  border-radius: 10rem;
+  padding: 10px;
+  margin: 10px;
+  box-decoration-break: inherit;
+}
+
+
+.map-canvas{
+  position: absolute;
+  right:2%;
+  top: 50px;
+}
+
