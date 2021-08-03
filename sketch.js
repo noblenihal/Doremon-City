@@ -6,13 +6,15 @@ function setup() {
   myCanvas.parent('myCanvas');
   frameRate(16);
 
+  let div0 = createDiv();
+  div0.id("choice");
 
-  createP("Choose your path");
+
+  let p1 = createP("Choose your path");
   
-
-  createP();
-  createSpan("Start Point");
-  select1 = createSelect();
+  let p2 = createP();
+  let p3 =createSpan("Start Point");
+  let s1= select1 = createSelect();
   select1.option("");
   select1.option("Nobi's Residence");
   select1.option("Shizuka's House");
@@ -23,11 +25,10 @@ function setup() {
   select1.option("Baseball Field");
   select1.option("Open Ground");
   
-  
 
-  createP();
-  createSpan("End Point");
-  select2 = createSelect();
+  let p4 = createP();
+  let p5 = createSpan("End Point");
+  let s2=select2 = createSelect();
   select2.option("");
   select2.option("Nobi's Residence");
   select2.option("Shizuka's House");
@@ -38,8 +39,8 @@ function setup() {
   select2.option("Baseball Field");
   select2.option("Open Ground");
 
-  createP();
-  button1 = createButton('Guide Me!');
+  let p6 = createP();
+  let button1 = createButton('Guide Me!');
   button1.style('background-color', color(43, 160, 290))
   button1.style('padding', '10px');
   button1.style('border-radius', '50px');
@@ -47,12 +48,25 @@ function setup() {
   button1.style('margin-left', '190px' );
 
 
-  button2 = createButton('Reset');
+  let button2 = createButton('Reset');
   button2.style('background-color', color(241, 112, 253))
   button2.style('padding', '10px');
   button2.style('border-radius', '50px');
   button2.style('cursor','pointer');
   button2.style('margin-left', '20px' );
+
+  p1.parent("choice")
+  p2.parent("choice")
+  p3.parent("choice")
+  s1.parent("choice")
+  p4.parent("choice")
+  p5.parent("choice")
+  s2.parent("choice")
+  p6.parent("choice")
+  button1.parent("choice")
+  button2.parent("choice")
+
+
   
 
   w = width / cols;

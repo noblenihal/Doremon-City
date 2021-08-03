@@ -21,6 +21,7 @@ h1{
   color: rgb(0, 0, 0);
   font-family: fantasy;
   margin: 0;
+  text-align: center;
 }
 
 #tokyo-map{
@@ -34,21 +35,28 @@ canvas {
   
 }
 
+
 p{
   font-family: fantasy;
-  font-size: 2rem;
+  font-size: 5vh;
   margin-left: 150px;
 }
 span{
   font-family: fantasy;
   margin-left: 150px;
+  font-size: 3vh;
 }
 
+button{
+  font-size: 3vh;
+  font-family: fantasy;
+}
 select{
   border-radius: 10rem;
   padding: 10px;
   margin: 10px;
   box-decoration-break: inherit;
+  outline: none;
 }
 
 
@@ -57,4 +65,21 @@ select{
   right:2%;
   top: 50px;
 }
+
+#choice{
+  position: absolute;
+  top:35%;
+
+}
+
+@media screen and (max-width:1250px) {
+  
+  #choice{
+    left:15vw;
+    top: 53vw;
+  }
+}
+
+
+
 
