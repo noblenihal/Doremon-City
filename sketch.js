@@ -13,6 +13,7 @@ function setup() {
   createP();
   createSpan("Start Point");
   select1 = createSelect();
+  select1.option("");
   select1.option("Nobi's Residence");
   select1.option("Shizuka's House");
   select1.option("Gian's Shop");
@@ -27,6 +28,7 @@ function setup() {
   createP();
   createSpan("End Point");
   select2 = createSelect();
+  select2.option("");
   select2.option("Nobi's Residence");
   select2.option("Shizuka's House");
   select2.option("Gian's Shop");
@@ -36,8 +38,22 @@ function setup() {
   select2.option("Baseball Field");
   select2.option("Open Ground");
 
+  createP();
+  button1 = createButton('Guide Me!');
+  button1.style('background-color', color(43, 160, 290))
+  button1.style('padding', '10px');
+  button1.style('border-radius', '50px');
+  button1.style('cursor','pointer');
+  button1.style('margin-left', '190px' );
 
-  console.log("A* Star");
+
+  button2 = createButton('Reset');
+  button2.style('background-color', color(241, 112, 253))
+  button2.style('padding', '10px');
+  button2.style('border-radius', '50px');
+  button2.style('cursor','pointer');
+  button2.style('margin-left', '20px' );
+  
 
   w = width / cols;
   h= height / rows; 
@@ -58,16 +74,14 @@ function setup() {
   }
   
 
-  for (var i = 0; i < cols; i++) {
-    for (var j = 0; j < rows; j++) {
-      grid[i][j].addNeighbors(grid);
-    }
-  }
+  neighbor();
 
   
   
   select1.changed(select1Changed);
   select2.changed(select2Changed);
+  button1.mousePressed(pressed);
+  button2.mousePressed(reset);
 
   start = select1.value;
   end = select2.value;
@@ -79,9 +93,6 @@ function setup() {
 
 function draw() {
     
-      
-
-    console.log( start.cell +", " + end.cell);
 
     if(started){
         
@@ -99,7 +110,6 @@ function draw() {
         
         if (current === end) {
           noLoop();
-          console.log('DONE!');
         }
       
         removeFromArray(openSet, current);
@@ -137,7 +147,6 @@ function draw() {
         }
         
       } else {
-        console.log('no solution');
         noLoop();
         return;
       }
@@ -170,7 +179,7 @@ function draw() {
       endShape();
 
     }else{
-      console.log("No");
+
     }
       
  }
@@ -179,48 +188,38 @@ function draw() {
   switch (select1.value()) {
     case "Nobi's Residence":
       start = grid[36][30];
-      openSet.push(start);
       break;
     case "Shizuka's House":
       start = grid[28][46]
-      openSet.push(start);
       break;
     case "Gian's Shop":
-      send = grid[43][25];
-      openSet.push(start);
+      start = grid[43][25];
 
       break;
     case "Suniyo's Bunglow":
       start = grid[44][43];
-      openSet.push(start);
 
       break;
     case "School":
       start = grid[28][15];
-      openSet.push(start);
 
       break;
     case "BackForest of school":
       start = grid[34][9]
-      openSet.push(start);
 
       break;
     case "Baseball Field":
       start = grid[6][33]
-      openSet.push(start);
 
       break;
     case "Open Ground":
       start = grid[29][40];
-      openSet.push(start);
 
       break;
   }
 }
 
 function select2Changed() {
-
-  started =true;
   switch (select2.value()) {
     case "Nobi's Residence":
       end = grid[36][30];
@@ -250,3 +249,30 @@ function select2Changed() {
 }
 
 
+function pressed(){
+  openSet.push(start);
+  started =true;
+}
+
+function reset(){
+  started =false;
+  clear();
+  openSet = [];
+  closedSet = []; 
+  neighbor();
+  loop();
+  
+}
+
+function neighbor(){
+  for (var i = 0; i < cols; i++) {
+    for (var j = 0; j < rows; j++) {
+      grid[i][j].neighbor = [];
+      grid[i][j].g=0;
+      grid[i][j].h=0;
+      grid[i][j].f=0;
+      grid[i][j].previous = undefined;
+      grid[i][j].addNeighbors(grid);
+    }
+  }
+}
